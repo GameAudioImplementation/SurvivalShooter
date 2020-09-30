@@ -6,10 +6,8 @@ public class Creak : MonoBehaviour
 {
     private AudioSource source;
     public AudioClip creak;
-    private float low = 0.75f;
-    private float high = 1.25f;
     public List<AudioClip> audioClips = new List<AudioClip>();
-    //private WaitForSeconds seconds;
+    private bool waiting = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +20,7 @@ public class Creak : MonoBehaviour
     {
         
     }
-    private bool waiting = false;
+    
     private void OnTriggerEnter(Collider other)
 
     {
@@ -52,7 +50,8 @@ public class Creak : MonoBehaviour
 
     private IEnumerator PauseSound()
     {
-        yield return new WaitForSeconds(30f);
+        float randTime = Random.Range(15f, 30f);
+        yield return new WaitForSeconds(randTime);
         waiting = false;
     }
 }
